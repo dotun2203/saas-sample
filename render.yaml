@@ -11,10 +11,11 @@
 services:
   - type: web
     name: cfchome
-    env: python
-    buildCommand: "pip install -r /tmp/requirements.txt"
-    startCommand: "./paracord_runner.sh"
+    env: docker
     plan: free
+    dockerfilePath: ./Dockerfile
+    # buildCommand: "pip install -r /tmp/requirements.txt"
+    startCommand: "./paracord_runner.sh"
     envVars:
       - key:SECRET_KEY
         value:'django-insecure-m$$j75vfzdpp7%!55n+g3*q9rv1#p4ct*@^2uzf=shj=wkpxz@'
