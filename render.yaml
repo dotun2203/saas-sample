@@ -1,0 +1,25 @@
+# [build]
+# builder = "DOCKERFILE"
+# dockerfilePath = "./Dockerfile"
+# watchPatterns = [
+#     "requirements.txt",
+#     "src/**",
+#     "railway.toml",
+#     "Dockerfile",
+# ]
+
+services:
+  - type: web
+    name: cfchome
+    env: python
+    buildCommand: "pip install -r /tmp/requirements.txt"
+    startCommand: "./paracord_runner.sh"
+    plan: free
+    envVars:
+      - key:SECRET_KEY
+        value:'django-insecure-m$$j75vfzdpp7%!55n+g3*q9rv1#p4ct*@^2uzf=shj=wkpxz@'
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value:'.onrender.com'
+    autoDeploy: true
