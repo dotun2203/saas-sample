@@ -1,3 +1,4 @@
+from os import path
 from django.http import HttpResponse
 from django.shortcuts import render
 import pathlib
@@ -24,6 +25,7 @@ def about_view(request, *args, **kwargs):
     my_context ={
         "page_title":my_title,"total_visit_count":queryset.count(), "page_visit_count":page_queryset.count(), "percent": percent
     }
+    PageVisit.objects.create(path=request.path)
     return render(request, html_template, my_context)
 
 
