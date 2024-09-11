@@ -7,5 +7,5 @@ class PageVisit(models.Model):
 
     path = models.TextField(null=True, blank=True) # col
     timestamp = models.DateTimeField(auto_now_add=True) # col
-    pass
+    
 
